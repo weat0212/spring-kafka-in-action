@@ -1,5 +1,6 @@
 package com.andywang.jms.bootstrap;
 
+import com.andywang.jms.producer.KafkaProducerDemo;
 import com.andywang.jms.producer.MessageSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,12 @@ public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent
     @Autowired
     private MessageSender sender;
 
+    @Autowired
+    private KafkaProducerDemo kafkaProducer;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         sender.sendMessage("Hello Spring Kafka");
+        kafkaProducer.sendMessage("Hello MyTopic");
     }
 }
