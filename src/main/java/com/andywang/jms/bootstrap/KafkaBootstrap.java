@@ -2,6 +2,7 @@ package com.andywang.jms.bootstrap;
 
 import com.andywang.jms.producer.KafkaProducerDemo;
 import com.andywang.jms.producer.MessageSender;
+import com.andywang.jms.producer.ProducerWithCallback;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -12,15 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
-    private MessageSender sender;
+//    @Autowired
+//    private MessageSender sender;
+//
+//    @Autowired
+//    private KafkaProducerDemo kafkaProducer;
 
     @Autowired
-    private KafkaProducerDemo kafkaProducer;
+    private ProducerWithCallback producerWithCallback;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        sender.sendMessage("Hello Spring Kafka");
-        kafkaProducer.sendMessage("Hello MyTopic");
+//        sender.sendMessage("Hello Spring Kafka");
+//        kafkaProducer.sendMessage("Hello MyTopic");
+        producerWithCallback.sendMessage("Hello Callback");
     }
 }
