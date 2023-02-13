@@ -1,5 +1,6 @@
 package com.andywang.jms.config;
 
+import com.andywang.jms.producer.ProducerWithKeys;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,5 +29,10 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic topic() {
         return new NewTopic(INTEREST_TOPIC, 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic keyTopic() {
+        return new NewTopic(ProducerWithKeys.KEY_TOPIC, 5, (short) 1);
     }
 }
