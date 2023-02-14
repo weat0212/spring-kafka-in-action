@@ -1,5 +1,6 @@
 package com.andywang.jms.bootstrap;
 
+import com.andywang.jms.consumer.KafkaConsumerDemo;
 import com.andywang.jms.producer.KafkaProducerDemo;
 import com.andywang.jms.producer.MessageSender;
 import com.andywang.jms.producer.PartitionRoundRobin;
@@ -32,6 +33,12 @@ public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
+        // Consumer
+        Thread t = new Thread(new KafkaConsumerDemo());
+        t.start();
+
+        // Producer
 //        sender.sendMessage("Hello Spring Kafka");
 //        kafkaProducer.sendMessage("Hello MyTopic");
 //        producerWithCallback.sendMessage("Hello Callback");
