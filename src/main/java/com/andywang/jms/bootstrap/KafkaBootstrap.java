@@ -1,5 +1,6 @@
 package com.andywang.jms.bootstrap;
 
+import com.andywang.jms.consumer.ConsumerCooperative;
 import com.andywang.jms.consumer.ConsumerGracefulShutdown;
 import com.andywang.jms.consumer.KafkaConsumerDemo;
 import com.andywang.jms.producer.KafkaProducerDemo;
@@ -37,8 +38,8 @@ public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent
 
         // Consumer
 //        Thread t = new Thread(new KafkaConsumerDemo());
-        Thread t = new Thread(new ConsumerGracefulShutdown());
-        t.start();
+//        Thread t = new Thread(new ConsumerCooperative());
+//        t.start();
 
         // Producer
 //        sender.sendMessage("Hello Spring Kafka");
