@@ -3,6 +3,7 @@ package com.andywang.jms.bootstrap;
 import com.andywang.jms.consumer.ConsumerCooperative;
 import com.andywang.jms.consumer.ConsumerGracefulShutdown;
 import com.andywang.jms.consumer.KafkaConsumerDemo;
+import com.andywang.jms.multitype.MultiTypeProducer;
 import com.andywang.jms.producer.CustomMessageSender;
 import com.andywang.jms.producer.KafkaProducerDemo;
 import com.andywang.jms.producer.MessageSender;
@@ -22,8 +23,8 @@ import java.util.Date;
 @Component
 public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
-    private MessageSender sender;
+//    @Autowired
+//    private MessageSender sender;
 
 //    @Autowired
 //    private KafkaProducerDemo kafkaProducer;
@@ -37,8 +38,11 @@ public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent
 //    @Autowired
 //    private ProducerWithKeys producerWithKeys;
 
+//    @Autowired
+//    private CustomMessageSender customMessageSender;
+
     @Autowired
-    private CustomMessageSender customMessageSender;
+    private MultiTypeProducer multiTypeProducer;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -56,6 +60,9 @@ public class KafkaBootstrap implements ApplicationListener<ContextRefreshedEvent
 //        producerWithCallback.sendMessage("Hello Callback");
 //        partitionRoundRobin.sendMessage("Round Robin");
 //        producerWithKeys.sendMessage("Send with keys");
-        customMessageSender.sendCustomMessage(CustomMessage.builder().message("I'm customized").timestamp(new Date()).build());
+//        customMessageSender.sendCustomMessage(CustomMessage.builder().message("I'm customized").timestamp(new Date()).build());
+
+        // Multi Type Producer
+        multiTypeProducer.sendMultiTypeMessage();
     }
 }
