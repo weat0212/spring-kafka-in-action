@@ -2,7 +2,6 @@ package com.andywang.jms.bootstrap;
 
 import com.andywang.jms.consumer.ConsumerCooperative;
 import com.andywang.jms.consumer.ConsumerGracefulShutdown;
-import com.andywang.jms.consumer.ConsumerWithThread;
 import com.andywang.jms.consumer.KafkaConsumerDemo;
 import com.andywang.jms.producer.CustomMessageSender;
 import com.andywang.jms.producer.KafkaProducerDemo;
